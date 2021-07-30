@@ -7,13 +7,12 @@ function App() {
   const [details, setDetails] = React.useState(GameData.data);
 
 
-  
- 
-  const handelSubmit = (filtring) => {
-    console.log(filtring)
-    let newData = details.filter(details => (details.Topic === filtring || details.Level === filtring || details.Group === filtring))
+  const handelSubmit = (Filter) => {
+    console.log(Filter)
+    let newData = details.filter(details => (details.Topic === Filter || details.Level === Filter || details.Group === Filter))
     console.log(newData)
     setDetails(newData)
+   
     
   }
 
@@ -24,8 +23,9 @@ function App() {
       <form onSubmit={(e) =>{
         e.preventDefault()
         handelSubmit(e.target.elements.topic.value)
+        e.target.elements.topic.value=""
       }}>
-        <input type="search" name="topic" placeholder="topic"/>
+        <input type="search" name="topic" placeholder="topic or level or group"/>
      
      
         <input type="submit" value="Filter"/>
